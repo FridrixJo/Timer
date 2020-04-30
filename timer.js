@@ -4,7 +4,8 @@ window.addEventListener('DOMContentLoaded', function(){
 			timeBox = document.querySelector('.timeBox'),
 			btn = document.querySelectorAll('.click'),
 			value = document.querySelector('[value]'),			
-			text = document.querySelector('.text');
+			text = document.querySelector('.text'),
+			TM = document.querySelectorAll('.TM');
 			newTimer.style.display = 'none';
 			//timeBox.style.display = 'none';
 			timerID = setInterval(time, 0.1); 
@@ -76,6 +77,25 @@ window.addEventListener('DOMContentLoaded', function(){
 				btn[1].addEventListener('click', function(e){
 					e.preventDefault();
 					location.reload();
-				
 				});
+                
+				tmF = setInterval(forward, 10);
+				function forward() {
+					TM[0].value++;
+					if (TM[0].value >= 4000) {
+						clearInterval(tmF);
+					}
+				}
+
+				tmB = setInterval(back, 10);
+				function back() {
+					TM[1].value--;
+					if (TM[1].value <= 1) {
+						clearInterval(tmB);
+					}
+				}
+
+				if ( TM[0].value >= 4000 && TM[1].value <= 1 ) {
+					
+				}
 });
